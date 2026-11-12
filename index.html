@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What's For Dinner</title>
+  <link  rel="stylesheet" href="./bootstrap-5.3.8-dist (3)/bootstrap-5.3.8-dist/css/bootstrap.min.css"     >
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+ 
+ 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+ 
+  <link href="./style.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <!-- Header (static) -->
+  <header class="site-header shadow-sm">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between">
+        <div class="d-flex align-items-center gap-3">
+          <div class="logo"><i class="fa-solid fa-utensils"></i></div>
+          <div>
+            <h1 class="h4 fw-bold mb-0">What's For Dinner</h1>
+            <p class="small text-secondary mb-0">Your daily meal inspiration</p>
+          </div>
+        </div>
+
+        <div class="d-none d-md-flex align-items-center gap-4">
+          <button class="nav-icon"><i class="fa-solid fa-bookmark"></i></button>
+          <button class="nav-icon"><i class="fa-solid fa-clock-rotate-left"></i></button>
+          <button class="nav-icon"><i class="fa-solid fa-gear"></i></button>
+          <img class="avatar" src="./images/avatar-4 (1).jpg" alt="Profile">
+        </div>
+
+        <button class="nav-icon d-md-none fs-3" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+
+      <div class="collapse d-md-none border-top mt-3 pt-3" id="mobileMenu">
+        <div class="d-flex flex-column gap-3">
+          <button class="nav-icon text-start"><i class="fa-solid fa-bookmark me-3"></i>Saved Recipes</button>
+          <button class="nav-icon text-start"><i class="fa-solid fa-clock-rotate-left me-3"></i>Recent</button>
+          <button class="nav-icon text-start"><i class="fa-solid fa-gear me-3"></i>Settings</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container py-4 py-lg-5">
+    <section class="recipe-card">
+      <div class="row g-0">
+
+        <!-- Image side -->
+        <div class="col-lg-5">
+          <div class="photo-col">
+            <img id="recipe-image" src="" alt="">
+            <div class="rating-pill">
+              <i class="fa-solid fa-star text-warning me-1"></i>
+              <span class="fw-semibold" id="rating-average"></span>
+              <span class="text-secondary small" id="rating-quantity"></span>
+            </div>
+            <div class="stats-card">
+              <div class="row text-center g-2">
+                <div class="col-4"><i class="fa-solid fa-clock" style="color:var(--orange)"></i><small>Prep Time</small><strong id="prep-time"></strong></div>
+                <div class="col-4"><i class="fa-solid fa-fire-burner text-danger"></i><small>Cook Time</small><strong id="cook-time"></strong></div>
+                <div class="col-4"><i class="fa-solid fa-users text-primary"></i><small>Servings</small><strong id="servings"></strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Details side -->
+        <div class="col-lg-7 info-col p-4 p-lg-5">
+          <div class="d-flex flex-column-reverse flex-md-row gap-3 justify-content-between align-items-md-start mb-4">
+            <div>
+              <div class="d-flex gap-2 mb-3">
+                <span class="badge-diff" id="difficulty"></span>
+                <span class="badge-cat" id="category"></span>
+              </div>
+              <h2 class="fw-bold fs-2 mb-2" id="recipe-name"></h2>
+              <p class="text-secondary mb-0" id="recipe-description"></p>
+            </div>
+            <div class="d-flex gap-2 align-self-end align-self-md-center">
+              <button class="icon-btn"><i class="fa-solid fa-bookmark"></i></button>
+              <button class="icon-btn"><i class="fa-solid fa-share-nodes"></i></button>
+            </div>
+          </div>
+
+          <div id="time-warning" class="time-warning mb-4 d-none">
+            <div class="d-flex align-items-center">
+              <i class="fa-solid fa-triangle-exclamation text-danger fs-4 me-3"></i>
+              <div>
+                <p class="fw-semibold mb-0" style="color:#991b1b">Extended Preparation Time</p>
+                <p class="small mb-0 text-danger">This recipe requires more than 45 minutes to prepare. Plan accordingly!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tabs -->
+          <ul class="nav recipe-tabs nav-justified mb-4" role="tablist">
+            <li class="nav-item"><button id="btn-ingredients" class="nav-link active" data-bs-toggle="tab" data-bs-target="#ingredients-tab"><i class="fa-solid fa-list-check me-1"></i>Ingredients</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#instructions-tab"><i class="fa-solid fa-book-open me-1"></i>Instructions</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#nutrition-tab"><i class="fa-solid fa-chart-pie me-1"></i>Nutrition</button></li>
+            <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#tips-tab"><i class="fa-solid fa-lightbulb me-1"></i>Chef's Tips</button></li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane fade show active pane-box" id="ingredients-tab">
+              <div class="ingredients-box"><ul class="list-unstyled mb-0" id="ingredients-list"></ul></div>
+            </div>
+            <div class="tab-pane fade pane-box" id="instructions-tab"><div id="instructions-list"></div></div>
+            <div class="tab-pane fade pane-box" id="nutrition-tab"><div class="row g-3" id="nutrition-list"></div></div>
+            <div class="tab-pane fade pane-box" id="tips-tab"><div id="tips-list"></div></div>
+          </div>
+
+          <div class="border-top mt-4 pt-4">
+            <button id="try-another-btn" class="btn btn-try"><i class="fa-solid fa-rotate me-2"></i>Try Another Recipe</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./bootstrap-5.3.8-dist (3)/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
